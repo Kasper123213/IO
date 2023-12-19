@@ -122,11 +122,10 @@ public class Zamowienie {
 
 	/**
 	 * 
-	 * @param Klient
+	 * @param klient
 	 */
-	public Klient setKlient(klient Klient) {
-		// TODO - implement Zamowienie.setKlient
-		throw new UnsupportedOperationException();
+	public void setKlient(Klient klient) {
+
 	}
 
 	public String getStatus() {
