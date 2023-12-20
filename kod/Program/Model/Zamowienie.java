@@ -140,13 +140,13 @@ public class Zamowienie {
 		//ustawiamy status :3
 		switch(status){
 			case("Potwierdzony"):
-				this.status = this.status.POTWIERDZONY;
+				this.status = Status.POTWIERDZONY;
 				break;
 			case("Niepotwierdzony"):
-				this.status = this.status.NIEPOTWIERDZONY;
+				this.status = Status.NIEPOTWIERDZONY;
 				break;
 			case("Odrzucony"):
-				this.status = this.status.ODRZUCONY;
+				this.status = Status.ODRZUCONY;
 				break;
 		}
 	}

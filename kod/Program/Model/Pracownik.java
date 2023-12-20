@@ -23,16 +23,19 @@ public class Pracownik extends Uzytkownik {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Oto parametry zamowienia: ");
 		System.out.println("");	//tu wypisac parametry
-
+		//todo ja bym tu dodal get zamowienie i zeby zamowienie zwracalo juz na przzyklad stringa albo cos
 
 
 		System.out.println("Czy potwierdzasz waznosc zamowienia?");
 		boolean odpowiedz = scanner.nextBoolean();
+
+		Klient klient = zamowienie.getKlient();
+
 		if(odpowiedz == true){
-			wyslijWiadomoscDoKlienta("Potwierdzono", zamowienie.getKlient());
+			wyslijWiadomoscDoKlienta("Potwierdzono", klient);
 			zamowienie.setStatus("Potwierdzony");
 		}else{
-			wyslijWiadomoscDoKlienta("Odrzucono, prosze zmienic dane", zamowienie.getKlient());
+			wyslijWiadomoscDoKlienta("Odrzucono, prosze zmienic dane", klient);
 			zamowienie.setStatus("Odrzucony");
 		}
 	}
