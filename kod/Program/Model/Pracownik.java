@@ -23,7 +23,6 @@ public class Pracownik extends Uzytkownik {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Oto parametry zamowienia: ");
 		System.out.println("");	//tu wypisac parametry
-		//todo ja bym tu dodal get zamowienie i zeby zamowienie zwracalo juz na przzyklad stringa albo cos
 
 
 		System.out.println("Czy potwierdzasz waznosc zamowienia?");
@@ -53,6 +52,8 @@ public class Pracownik extends Uzytkownik {
 		// TODO - implement Pracownik.getData
 		throw new UnsupportedOperationException();
 	}
+
+
 
 
 
