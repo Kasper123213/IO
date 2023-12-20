@@ -5,8 +5,10 @@ import Program.Model.*;
 
 public class Aplikacja {
 
-	public Collection<Pracownik> pracownicy = new ArrayList<Pracownik>();
-	public Collection<Klient> klienci = new ArrayList<Klient>();
+	public static ArrayList<Pracownik> pracownicy = new ArrayList<Pracownik>();
+	public static ArrayList<Klient> klienci = new ArrayList<Klient>();
+
+	public static ArrayList<Kierowca> kierowcy = new ArrayList<Kierowca>();
 
 	/**
 	 * 
@@ -24,6 +26,10 @@ public class Aplikacja {
 	private Uzytkownik zaloguj(boolean czyPracownik) {
 		// TODO - implement Aplikacja.zaloguj
 		throw new UnsupportedOperationException();
+	}
+
+	public Aplikacja(){
+		System.out.println("hej");
 	}
 
 }

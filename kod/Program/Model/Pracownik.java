@@ -1,5 +1,7 @@
 package Program.Model;
 
+import java.util.Scanner;
+
 public class Pracownik extends Uzytkownik {
 
 	/**
@@ -18,7 +20,25 @@ public class Pracownik extends Uzytkownik {
 	 */
 	private void zmienStatus(Zamowienie zamowienie) {
 		// TODO - implement Pracownik.zmienStatus
-		throw new UnsupportedOperationException();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Oto parametry zamowienia: ");
+		System.out.println("");	//tu wypisac parametry
+
+
+
+		System.out.println("Czy potwierdzasz waznosc zamowienia?");
+		boolean odpowiedz = scanner.nextBoolean();
+		if(odpowiedz == true){
+			wyslijWiadomoscDoKlienta("Potwierdzono", zamowienie.getKlient());
+			zamowienie.setStatus("Potwierdzony");
+		}else{
+			wyslijWiadomoscDoKlienta("Odrzucono, prosze zmienic dane", zamowienie.getKlient());
+			zamowienie.setStatus("Odrzucony");
+		}
+	}
+
+	private void wyslijWiadomoscDoKlienta(String wiadomosc, Klient klient){
+
 	}
 
 	/**
@@ -30,5 +50,7 @@ public class Pracownik extends Uzytkownik {
 		// TODO - implement Pracownik.getData
 		throw new UnsupportedOperationException();
 	}
+
+
 
 }

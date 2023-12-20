@@ -1,8 +1,15 @@
 package Program.Model;
 
+import java.sql.SQLOutput;
+import java.util.Date;
+import java.util.Scanner;
+import Program.Kontroler.Aplikacja;
+
 public class Klient extends Uzytkownik {
 
 	private Adres adres;
+
+	boolean changes;
 
 	/**
 	 * 
@@ -26,13 +33,31 @@ public class Klient extends Uzytkownik {
 		this.adres = adres;
 	}
 
-	/**
-	 * 
-	 * @param zamowienie
-	 */
-	private void dodajZamowienie(Zamowienie zamowienie) {
+
+	private void dodajZamowienie(int idKlienta, double masa, String towar, double dystans, Date dataZlozenia, boolean czyWlasnyKierowca, String start, String koniec) {
 		// TODO - implement Klient.dodajZamowienie
-		throw new UnsupportedOperationException();
+		Scanner scanner = new Scanner(System.in);
+		Kierowca kierowca;
+		if(czyWlasnyKierowca){
+			System.out.println("Podaj imie kierowcy");
+			String imie = scanner.nextLine();
+			System.out.println("Podaj nazwisko kierowcy");
+			String nazwisko = scanner.nextLine();
+			System.out.println("Podaj nr prawa jazdy kierowcy");
+			int nrPrawaJazdy = scanner.nextInt();
+			kierowca = new Kierowca(imie,nazwisko,nrPrawaJazdy,true);
+		}else{
+			kierowca = Aplikacja.kierowcy.get(0);
+		}
+
+		Zamowienie zamowienie = new Zamowienie(idKlienta, masa, towar, dystans, dataZlozenia, kierowca, start, koniec);    //utworz nowe zamowienie
+
+		zamowienie.obliczCene();
+		zamowienie.obliczPrzewidywanaDateRealizacji();
+		zamowienie.setStatus("Niepotwierdzony");
+		this.zamowienia.add(zamowienie);	//dodaj do listy zamowien tego uzytkownika
+
+
 	}
 
 	/**
@@ -46,12 +71,6 @@ public class Klient extends Uzytkownik {
 	}
 
 
-	public enum Adres {
-		miasto,
-		ulica,
-		numerDomu,
-		numerMieszkania,
-		kodPocztowy
-	}
+
 
 }

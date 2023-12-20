@@ -111,4 +111,6 @@ public abstract class Uzytkownik {
 		throw new UnsupportedOperationException();
 	}
 
+
+
 }

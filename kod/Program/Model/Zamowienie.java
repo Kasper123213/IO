@@ -1,5 +1,7 @@
 package Program.Model;
 
+import java.util.Date;
+
 public class Zamowienie {
 
 	private double cena;
@@ -10,7 +12,11 @@ public class Zamowienie {
 	private Date przewidywanaDataRealizacji;
 	private Kierowca kierowca;
 	private Klient klient;
-	private String status;
+	private Status status;
+
+	private String lokalizacjaPoczatkowa;
+
+	private String lokalizacjaKoncowa;
 
 	/**
 	 * 
@@ -19,31 +25,23 @@ public class Zamowienie {
 	 * @param towar
 	 * @param dystans
 	 * @param dataZlozenia
-	 * @param kierowca
 	 */
-	public Zamowienie(int idKlienta, double masa, String towar, double dystans, Date dataZlozenia, Kierowca kierowca) {
+	public Zamowienie(int idKlienta, double masa, String towar, double dystans, Date dataZlozenia, Kierowca kierowca, String start, String stop) {
 		// TODO - implement Zamowienie.Zamowienie
+		//ustaw status na niepotwierdzony
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param cena
-	 * @param masa
-	 * @param towar
-	 * @param dystans
-	 * @param kierowca
-	 */
-	public void obliczCene(double cena, double masa, String towar, double dystans, Kierowca kierowca) {
+
+	public void obliczCene() {
 		// TODO - implement Zamowienie.obliczCene
 		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * 
-	 * @param przewidywanaDataRealizacji
 	 */
-	public void obliczPrzewidywanaDateRealizacji(Date przewidywanaDataRealizacji) {
+	public void obliczPrzewidywanaDateRealizacji() {
 		// TODO - implement Zamowienie.obliczPrzewidywanaDateRealizacji
 		throw new UnsupportedOperationException();
 	}
@@ -128,7 +126,7 @@ public class Zamowienie {
 
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return this.status;
 	}
 
@@ -137,15 +135,44 @@ public class Zamowienie {
 	 * @param status
 	 */
 	public void setStatus(String status) {
-		this.status = status;
+
+		//ustawiamy status :3
+		switch(status){
+			case("Potwierdzony"):
+				this.status = this.status.POTWIERDZONY;
+				break;
+			case("Niepotwierdzony"):
+				this.status = this.status.NIEPOTWIERDZONY;
+				break;
+			case("Odrzucony"):
+				this.status = this.status.ODRZUCONY;
+				break;
+		}
 	}
 
+	public String getLokalizacjaPoczatkowa(){return this.lokalizacjaPoczatkowa;}
 
-	public enum Kierowca {
-		imie,
-		nazwisko,
-		nrPrawaJazdy,
-		czyWynajety
+	public void setLokalizacjaPoczatkowa(String lokalizacjaPoczatkowa){this.lokalizacjaPoczatkowa = lokalizacjaPoczatkowa;}
+
+	public String getLokalizacjaKoncowa(){return this.lokalizacjaKoncowa;}
+
+	public void setLokalizacjaKoncowa(String lokalizacjaKoncowa){this.lokalizacjaKoncowa = lokalizacjaKoncowa;}
+
+
+	public enum Status {
+		POTWIERDZONY("Potwierdzony"),
+		NIEPOTWIERDZONY("Niepotwierdzony"),
+		ODRZUCONY("Odrzucony");
+
+		private String opis;
+
+		Status(String opis){
+			this.opis = opis;
+		}
+
+		public String getOpis(){
+			return opis;
+		}
 	}
 
 }
