@@ -30,6 +30,8 @@ public class Zamowienie {
 		// TODO - implement Zamowienie.Zamowienie
 		//ustaw status na niepotwierdzony
 		setStatus("Niepotwierdzony");
+		obliczCene();
+		obliczPrzewidywanaDateRealizacji();
 		throw new UnsupportedOperationException();
 	}
 

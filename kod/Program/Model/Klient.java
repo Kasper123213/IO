@@ -45,15 +45,16 @@ public class Klient extends Uzytkownik {
 			String nazwisko = scanner.nextLine();
 			System.out.println("Podaj nr prawa jazdy kierowcy");
 			int nrPrawaJazdy = scanner.nextInt();
-			kierowca = new Kierowca(imie,nazwisko,nrPrawaJazdy,true);
+			boolean czyWynajety = true;
+			kierowca = new Kierowca(imie,nazwisko,nrPrawaJazdy,czyWynajety);
 		}else{
 			kierowca = Aplikacja.kierowcy.get(0);
 		}
 
 		Zamowienie zamowienie = new Zamowienie(idKlienta, masa, towar, dystans, dataZlozenia, kierowca, start, koniec);    //utworz nowe zamowienie
 
-		zamowienie.obliczCene();
-		zamowienie.obliczPrzewidywanaDateRealizacji();
+		System.out.println("Cena to: "+zamowienie.getCena());
+		System.out.println("Przewidywana data realizacji to: "+zamowienie.getPrzewidywanaDataRealizacji());
 		zamowienie.setStatus("Niepotwierdzony");
 		this.zamowienia.add(zamowienie);	//dodaj do listy zamowien tego uzytkownika
 
