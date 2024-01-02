@@ -48,16 +48,15 @@ public class Klient extends Uzytkownik {
 			boolean czyWynajety = true;
 			kierowca = new Kierowca(imie,nazwisko,nrPrawaJazdy,czyWynajety);
 		}else{
-			kierowca = Aplikacja.kierowcy.get(0);
+			kierowca = Aplikacja.kierowcy.removeFirst();
+			Aplikacja.kierowcy.add(kierowca);
 		}
 
 		Zamowienie zamowienie = new Zamowienie(idKlienta, masa, towar, dystans, dataZlozenia, kierowca, start, koniec);    //utworz nowe zamowienie
 
 		System.out.println("Cena to: "+zamowienie.getCena());
 		System.out.println("Przewidywana data realizacji to: "+zamowienie.getPrzewidywanaDataRealizacji());
-		zamowienie.setStatus("Niepotwierdzony");
 		this.zamowienia.add(zamowienie);	//dodaj do listy zamowien tego uzytkownika
-
 
 	}
 
@@ -70,8 +69,5 @@ public class Klient extends Uzytkownik {
 		// TODO - implement Klient.getData
 		throw new UnsupportedOperationException();
 	}
-
-
-
 
 }

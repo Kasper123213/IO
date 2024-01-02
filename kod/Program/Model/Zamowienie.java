@@ -29,9 +29,15 @@ public class Zamowienie {
 	public Zamowienie(int idKlienta, double masa, String towar, double dystans, Date dataZlozenia, Kierowca kierowca, String start, String stop) {
 		// TODO - implement Zamowienie.Zamowienie
 		//ustaw status na niepotwierdzony
-		setStatus("Niepotwierdzony");
+		setMasa(masa);
+		setTowar(towar);
+		setDystans(dystans);
+		setDataZlozenia(dataZlozenia);
+		setKierowca(kierowca);
+		setKlient(klient);
 		obliczCene();
 		obliczPrzewidywanaDateRealizacji();
+		setStatus("Niepotwierdzony");
 		throw new UnsupportedOperationException();
 	}
 

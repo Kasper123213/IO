@@ -29,7 +29,7 @@ public class Aplikacja {
 	}
 
 	public Aplikacja(){
-		System.out.println("hej");
+
 	}
 
 }
