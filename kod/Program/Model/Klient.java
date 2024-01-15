@@ -48,7 +48,7 @@ public class Klient extends Uzytkownik {
 			boolean czyWynajety = true;
 			kierowca = new Kierowca(imie,nazwisko,nrPrawaJazdy,czyWynajety);
 		}else{
-			kierowca = Aplikacja.kierowcy.removeFirst();
+			kierowca = Aplikacja.kierowcy.remove(0);
 			Aplikacja.kierowcy.add(kierowca);
 		}
 
