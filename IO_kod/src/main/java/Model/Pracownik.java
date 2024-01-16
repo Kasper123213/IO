@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Pracownik extends Uzytkownik {
@@ -18,29 +19,30 @@ public class Pracownik extends Uzytkownik {
 	 * 
 	 * @param zamowienie
 	 */
-	private void zmienStatus(Zamowienie zamowienie) {
+	private void zmienStatus(Zamowienie zamowienie, String odpowiedz) {
 		// TODO - implement Pracownik.zmienStatus
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Oto parametry zamowienia: ");
-		System.out.println("");	//tu wypisac parametry
-
-
-		System.out.println("Czy potwierdzasz waznosc zamowienia?");
-		boolean odpowiedz = scanner.nextBoolean();
 
 		Klient klient = zamowienie.getKlient();
 
-		if(odpowiedz == true){
+		boolean akceptuj = false;
+		try{
+			akceptuj = Boolean.parseBoolean(odpowiedz);
+		}catch (InputMismatchException e){
+			System.out.println(e.getStackTrace());
+		}
+
+		if(akceptuj){
 			wyslijWiadomoscDoKlienta("Potwierdzono", klient);
 			zamowienie.setStatus("Potwierdzony");
 		}else{
 			wyslijWiadomoscDoKlienta("Odrzucono, prosze zmienic dane", klient);
 			zamowienie.setStatus("Odrzucony");
 		}
+
 	}
 
-	private void wyslijWiadomoscDoKlienta(String wiadomosc, Klient klient){
-
+	String wyslijWiadomoscDoKlienta(String wiadomosc, Klient klient){
+		return null; //todo
 	}
 
 	/**

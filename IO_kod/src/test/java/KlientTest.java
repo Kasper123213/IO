@@ -6,6 +6,8 @@ import mockit.Mocked;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.Mockito.*;
+
 
 import java.util.Scanner;
 
@@ -33,7 +35,7 @@ class KlientTest {
         assertEquals(zamowienie1, klient.zamowienia.get(klient.zamowienia.size()-1));
     }
 
-    @ExtendWith(MockitoExtension.class)
+//    @ExtendWith(MockitoExtension.class)//todo
     void dodajZamowienie(@Mocked Scanner anyScanner) {
         // Przygotowanie danych testowych
         int idKlienta = 1;
