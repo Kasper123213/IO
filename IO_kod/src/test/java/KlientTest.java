@@ -70,6 +70,7 @@ class KlientTest {
 
     @Test
     void dodajZamowienie(){
+        int iloscZamowien = klient.zamowienia.size();
         int idKlienta = 4;
 
         double masa = 4;
@@ -94,18 +95,18 @@ class KlientTest {
 
         klient.dodajZamowienie(idKlienta, masa, towar, dystans, dataZlozenia, czyWlasnyKierowca, start, start);
 
+        assertEquals(iloscZamowien+1, klient.zamowienia.size());
         assertEquals(zamowienie.getKlient(), klient.zamowienia.get(klient.zamowienia.size()-1).getKlient());
-        assertEquals(zamowienie.getCena(), klient.zamowienia.get(klient.zamowienia.size()-1).getCena());
-        //todo nie wiem w sumie ile tych assertow bo zamowien nie mozna porownaz bezposrednio bo to inne obiekty o tych samych wartosciach
-    //todo system.out.print tez chyba idzie przetestowac wedlug chata
-//https://chat.openai.com/share/91ede0cb-8926-43bf-874b-507bc281cdaf
+        assertEquals(zamowienie.getDataZlozenia(), klient.zamowienia.get(klient.zamowienia.size()-1).getDataZlozenia());
+
     }
     @Test
     void usunZamowienie(){
+        klient.zamowienia.clear();
         klient.zamowienia.add(zamowienie1);
         klient.zamowienia.add(zamowienie2);
 
-        klient.zamowienia.remove(klient.zamowienia.size()-1);
+        klient.usunZamowienie(zamowienie2);
 
         assertEquals(zamowienie1, klient.zamowienia.get(klient.zamowienia.size()-1));
     }

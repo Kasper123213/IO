@@ -45,11 +45,10 @@ public class Klient extends Uzytkownik {
 			String nazwisko = scanner.nextLine();
 			System.out.println("Podaj nr prawa jazdy kierowcy");
 			int nrPrawaJazdy = scanner.nextInt();
-			boolean czyWynajety = true; //todo chyba troche nie logiczne czy wlasny, tak wiec wynajety
+			boolean czyWynajety = false;
 			kierowca = new Kierowca(imie,nazwisko,nrPrawaJazdy,czyWynajety);
 		}else{
 			kierowca = Aplikacja.kierowcy.remove(0);
-			Aplikacja.kierowcy.add(kierowca);
 		}
 
 		Zamowienie zamowienie = new Zamowienie(idKlienta, masa, towar, dystans, dataZlozenia, kierowca, start, koniec);    //utworz nowe zamowienie
@@ -75,8 +74,8 @@ public class Klient extends Uzytkownik {
 
 	}
 
-	public void usunZamowienie(){
-		zamowienia.remove(zamowienia.size()-1);
+	public void usunZamowienie(Zamowienie zamowienie){
+		zamowienia.remove(zamowienie);
 	}
 
 	public void edytujZamowienie(){
