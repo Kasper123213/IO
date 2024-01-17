@@ -45,7 +45,7 @@ public class Klient extends Uzytkownik {
 			String nazwisko = scanner.nextLine();
 			System.out.println("Podaj nr prawa jazdy kierowcy");
 			int nrPrawaJazdy = scanner.nextInt();
-			boolean czyWynajety = true;
+			boolean czyWynajety = true; //todo chyba troche nie logiczne czy wlasny, tak wiec wynajety
 			kierowca = new Kierowca(imie,nazwisko,nrPrawaJazdy,czyWynajety);
 		}else{
 			kierowca = Aplikacja.kierowcy.remove(0);
