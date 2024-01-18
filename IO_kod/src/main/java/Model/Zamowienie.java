@@ -148,7 +148,7 @@ public class Zamowienie {
 	 * @param klient
 	 */
 	public void setKlient(Klient klient) {
-
+		this.klient = klient;
 	}
 
 	public Status getStatus() {

@@ -25,6 +25,7 @@ class PracownikTest {
         klient = new Klient("x","y");
         zamowienie = new Zamowienie(1,1,"banany",929,new Date(13, 4, 1),new Kierowca("j","k",6,true),"Wroclaw","Warszawa");
         klient.zamowienia.add(zamowienie);
+        zamowienie.setKlient(klient);
 
     }
 
@@ -35,12 +36,12 @@ class PracownikTest {
 
         pracownik.zmienStatus(zamowienie, "true");
 
-        assertEquals("Potwierdzony", zamowienie.getStatus());
+        assertEquals("Potwierdzony", zamowienie.getStatus().getOpis());
         assertEquals("Potwierdzono",klient.wiadomosci.get(klient.wiadomosci.size()-1));
 
         pracownik.zmienStatus(zamowienie, "false");
 
-        assertEquals("Odrzucony", zamowienie.getStatus());
+        assertEquals("Odrzucony", zamowienie.getStatus().getOpis());
         assertEquals("Odrzucono, prosze zmienic dane",klient.wiadomosci.get(klient.wiadomosci.size()-1));
 
     }

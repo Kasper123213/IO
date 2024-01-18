@@ -29,19 +29,15 @@ public class Aplikacja {
 		String haslo = scanner.nextLine();
 
 		if (czyPracownik == true) {
-			Pracownik p;
-			for (int i = 0; i < pracownicy.size(); i++) {
-				p = pracownicy.get(i);
-				if (p.getLogin() == login && p.getHaslo() == haslo) {
-					return p;
+			for (Pracownik pracownik : pracownicy) {
+				if (pracownik.getLogin() == login && pracownik.getHaslo() == haslo) {
+					return pracownik;
 				}
 			}
 		} else {
-			Klient k;
-			for (int i = 0; i < klienci.size(); i++) {
-				k = klienci.get(i);
-				if (k.getLogin() == login && k.getHaslo() == haslo) {
-					return k;
+			for (Klient klient : klienci) {
+				if (klient.getLogin() == login && klient.getHaslo() == haslo) {
+					return klient;
 				}
 			}
 		}

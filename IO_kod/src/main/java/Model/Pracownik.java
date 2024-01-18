@@ -11,8 +11,8 @@ public class Pracownik extends Uzytkownik {
 	 * @param haslo
 	 */
 	public Pracownik(String login, String haslo) {
-		// TODO - implement Pracownik.Pracownik
-		throw new UnsupportedOperationException();
+		setLogin(login);
+		setHaslo(haslo);
 	}
 
 	/**
@@ -42,6 +42,7 @@ public class Pracownik extends Uzytkownik {
 	}
 
 	public String wyslijWiadomoscDoKlienta(String wiadomosc, Klient klient){
+		klient.wiadomosci.add(wiadomosc);
 		return wiadomosc; //todo
 	}
 

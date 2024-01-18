@@ -14,7 +14,7 @@ public class Klient extends Uzytkownik {
 
 	public Scanner scanner;
 
-	public ArrayList wiadomosci = new ArrayList<>();
+	public ArrayList<String> wiadomosci = new ArrayList<>();
 
 	/**
 	 * 
@@ -23,6 +23,8 @@ public class Klient extends Uzytkownik {
 	 */
 	public Klient(String login, String haslo) {
 		scanner = new Scanner(System.in);
+		setLogin(login);
+		setHaslo(haslo);
 	}
 
 	public Adres getAdres() {

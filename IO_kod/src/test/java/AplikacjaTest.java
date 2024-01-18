@@ -5,6 +5,9 @@ import Model.Uzytkownik;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Scanner;
+
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,36 +19,39 @@ class AplikacjaTest {
     @BeforeEach
     public void setup(){
         app = new Aplikacja();
+        app.scanner = mock(Scanner.class);
 
-        app.pracownicy.add(new Pracownik(login1,haslo1));
-        app.pracownicy.add(new Pracownik(login2,haslo2));
-        app.klienci.add(new Klient(login3,haslo3));
-        app.klienci.add(new Klient(login4,haslo4));
+        pracownik1 = new Pracownik(login1, haslo1);
+        pracownik2 = new Pracownik(login2, haslo2);
+        klient1 = new Klient(login3, haslo3);
+        klient2 = new Klient(login4, haslo4);
+
+        app.pracownicy.add(pracownik1);
+        app.pracownicy.add(pracownik2);
+        app.klienci.add(klient1);
+        app.klienci.add(klient2);
+
     }
     @Test
     public void zalogujTest(){
         Uzytkownik x;
 
-        //mozeby porownac obiekty? ale wtedy chyba beda rozne hashe
-        x = app.zaloguj(true);
         when(app.scanner.nextLine()).thenReturn(login1).thenReturn(haslo1);
-        assertEquals(login1, x.getLogin());
-        assertEquals(haslo1, x.getHaslo());
-
         x = app.zaloguj(true);
+        assertEquals(pracownik1, x);
+
         when(app.scanner.nextLine()).thenReturn(login2).thenReturn(haslo2);
-        assertEquals(login2, x.getLogin());
-        assertEquals(haslo2, x.getHaslo());
-
         x = app.zaloguj(true);
-        when(app.scanner.nextLine()).thenReturn(login3).thenReturn(haslo2);
-        assertEquals(login3, x.getLogin());
-        assertEquals(haslo3, x.getHaslo());
+        assertEquals(pracownik2, x);
 
-        x = app.zaloguj(true);
-        when(app.scanner.nextLine()).thenReturn(login4).thenReturn(haslo2);
-        assertEquals(login4, x.getLogin());
-        assertEquals(haslo4, x.getHaslo());
+        when(app.scanner.nextLine()).thenReturn(login3).thenReturn(haslo3);
+        x = app.zaloguj(false);
+        assertEquals(klient1, x);
+
+        when(app.scanner.nextLine()).thenReturn(login4).thenReturn(haslo4);
+        x = app.zaloguj(false);
+        assertEquals(klient2, x);
+
     }
 
 }
