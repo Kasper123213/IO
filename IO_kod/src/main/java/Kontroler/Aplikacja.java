@@ -9,9 +9,9 @@ public class Aplikacja {
 	public static ArrayList<Klient> klienci = new ArrayList<Klient>();
 
 	public static ArrayList<Kierowca> kierowcy = new ArrayList<Kierowca>();
+	public Scanner scanner;
 
 	/**
-	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -20,12 +20,34 @@ public class Aplikacja {
 	}
 
 	/**
-	 * 
 	 * @param czyPracownik
 	 */
-	private Uzytkownik zaloguj(boolean czyPracownik) {
-		return null; //todo
+	public Uzytkownik zaloguj(boolean czyPracownik) {
+		System.out.println("Podaj login");
+		String login = scanner.nextLine();
+		System.out.println("Podaj haslo");
+		String haslo = scanner.nextLine();
+
+		if (czyPracownik == true) {
+			Pracownik p;
+			for (int i = 0; i < pracownicy.size(); i++) {
+				p = pracownicy.get(i);
+				if (p.getLogin() == login && p.getHaslo() == haslo) {
+					return p;
+				}
+			}
+		} else {
+			Klient k;
+			for (int i = 0; i < klienci.size(); i++) {
+				k = klienci.get(i);
+				if (k.getLogin() == login && k.getHaslo() == haslo) {
+					return k;
+				}
+			}
+		}
+		return null;
 	}
+
 
 	public Aplikacja(){
 
