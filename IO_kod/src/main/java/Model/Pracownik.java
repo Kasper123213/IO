@@ -19,7 +19,7 @@ public class Pracownik extends Uzytkownik {
 	 * 
 	 * @param zamowienie
 	 */
-	private void zmienStatus(Zamowienie zamowienie, String odpowiedz) {
+	public void zmienStatus(Zamowienie zamowienie, String odpowiedz) {
 		// TODO - implement Pracownik.zmienStatus
 
 		Klient klient = zamowienie.getKlient();
@@ -41,8 +41,8 @@ public class Pracownik extends Uzytkownik {
 
 	}
 
-	String wyslijWiadomoscDoKlienta(String wiadomosc, Klient klient){
-		return null; //todo
+	public String wyslijWiadomoscDoKlienta(String wiadomosc, Klient klient){
+		return wiadomosc; //todo
 	}
 
 	/**

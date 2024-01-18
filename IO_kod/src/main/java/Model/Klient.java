@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import Kontroler.Aplikacja;
@@ -12,6 +13,8 @@ public class Klient extends Uzytkownik {
 	boolean changes;
 
 	public Scanner scanner;
+
+	public ArrayList wiadomosci = new ArrayList<>();
 
 	/**
 	 * 
@@ -148,6 +151,14 @@ public class Klient extends Uzytkownik {
 
 	public void wyloguj(){
 
+	}
+
+	public void odbierzWiadomosc(String wiadomosc){
+		wiadomosci.add(wiadomosc);
+	}
+
+	public ArrayList<String> getWiadomosci(){
+		return wiadomosci;
 	}
 
 }
